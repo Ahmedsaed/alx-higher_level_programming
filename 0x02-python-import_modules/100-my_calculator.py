@@ -24,4 +24,3 @@ if __name__ == "__main__":
             r = div(a, b)
 
         print("{} {} {} = {}".format(a, argv[2], b, r))
-
