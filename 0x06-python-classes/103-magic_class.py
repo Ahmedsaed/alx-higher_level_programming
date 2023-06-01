@@ -1,9 +1,11 @@
 #!/usr/bin/python3
+"""defines MagicClass implementation"""
 import dis
 import math
 
 
 class MagicClass:
+    """After reverse engineering the bytecode. the magic class turns out to be a class for a circle"""
     def __init__(self, radius):
         self.__radius = 0
 
@@ -13,9 +15,11 @@ class MagicClass:
             self.__radius = radius
 
     def area(self):
+        """returns the area of the circle"""
         return self.__radius ** 2 * math.pi
 
     def circumference(self):
+        """returns the circumference of the circle"""
         return 2 * math.pi * self.__radius
 
 
