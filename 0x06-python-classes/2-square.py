@@ -16,7 +16,7 @@ class Square:
         __size: private instance size
 
     Args:
-        __size: the size of the square. should be an 
+        __size: the size of the square. should be an
         int that's greater than 0
     """
     def __init__(self, size=0):
