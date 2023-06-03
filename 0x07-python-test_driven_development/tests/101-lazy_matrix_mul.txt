@@ -1,0 +1,27 @@
+test cases for lazy_matrix_mul
+===============================
+
+load function
+    >>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+Checking for module docstring
+    >>> print(len(__import__('4-print_square').__doc__) >= 1)
+    True
+
+Checking for function docstring
+    >>> print(len(__import__('4-print_square').print_square.__doc__) >= 1)
+    True
+
+test normal case
+    >>> a = [[1, 2], [3, 4]]
+    >>> b = [[5, 6], [7, 8]]
+    >>> lazy_matrix_mul(a, b)
+    array([[19, 22],
+           [43, 50]])
+
+test different sizes
+    >>> a = [[1, 2, 3], [4, 5, 6]]
+    >>> b = [[7, 8], [9, 10], [11, 12]]
+    >>> lazy_matrix_mul(a, b)
+    array([[ 58,  64],
+           [139, 154]])
