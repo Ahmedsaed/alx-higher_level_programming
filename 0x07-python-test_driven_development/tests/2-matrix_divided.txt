@@ -1,0 +1,85 @@
+doctest for 2-matrix_divided.py
+===============================
+
+testing function with scalar division with single digit div
+    >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+    >>> matrix_divided([[1, 2, 3], [4, 5, 6]], 2)
+    [[0.5, 1.0, 1.5], [2.0, 2.5, 3.0]]
+
+testing function with scalar division with double digit div
+    >>> matrix_divided([[1, 2, 3], [4, 5, 6]], 22)
+    [[0.05, 0.09, 0.14], [0.18, 0.23, 0.27]]
+
+testing function with scalar division with negative div
+    >>> matrix_divided([[1, 2, 3], [4, 5, 6]], -2)
+    [[-0.5, -1.0, -1.5], [-2.0, -2.5, -3.0]]
+
+testing function with scalar division with zero div
+    >>> matrix_divided([[1, 2, 3], [4, 5, 6]], 0)
+    Traceback (most recent call last):
+    ...
+    ZeroDivisionError: division by zero
+
+testing function with scalar division with string div
+    >>> matrix_divided([[1, 2, 3], [4, 5, 6]], "2")
+    Traceback (most recent call last):
+    ...
+    TypeError: div must be a number
+
+testing function with scalar division with list div
+    >>> matrix_divided([[1, 2, 3], [4, 5, 6]], [2])
+    Traceback (most recent call last):
+    ...
+    TypeError: div must be a number
+
+testing function with scalar division with tuple div
+    >>> matrix_divided([[1, 2, 3], [4, 5, 6]], (2,))
+    Traceback (most recent call last):
+    ...
+    TypeError: div must be a number
+
+testing function with scalar division with dict div
+    >>> matrix_divided([[1, 2, 3], [4, 5, 6]], {2: 2})
+    Traceback (most recent call last):
+    ...
+    TypeError: div must be a number
+
+testing function with scalar division with float div
+    >>> matrix_divided([[1, 2, 3], [4, 5, 6]], 2.0)
+    [[0.5, 1.0, 1.5], [2.0, 2.5, 3.0]]
+
+testing how function handles None argument
+    >>> matrix_divided([[1, 2, 3], [4, 5, 6]], None)
+    Traceback (most recent call last):
+    ...
+    TypeError: div must be a number
+
+testing how function handles None matrix
+    >>> matrix_divided(None, 2)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+testing how function handles non-list matrix
+    >>> matrix_divided(2, 2)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+testing how function handles non-list matrix
+    >>> matrix_divided("2", 2)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+testing how function handles non-list matrix
+    >>> matrix_divided((2,), 2)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+testing how function handles non-list matrix
+    >>> matrix_divided({2: 2}, 2)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
