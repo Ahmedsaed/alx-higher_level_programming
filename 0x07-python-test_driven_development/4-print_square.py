@@ -5,6 +5,7 @@ This module has print_square implementation
 
 
 def print_square(size):
+    """that prints a square with the character #"""
     if type(size) is not int:
         raise TypeError("size must be an integer")
     elif size < 0:
