@@ -72,6 +72,10 @@ class TestMaxInteger(unittest.TestCase):
         with self.assertRaises(TypeError):
             max_integer({1, 2, 3, 4})
 
+    def test_max_at_middle(self):
+        """Test a max integer at middle"""
+        self.assertEqual(max_integer([1, 2, 4, 3]), 4)
+
 
 if __name__ == '__main__':
     unittest.main()
