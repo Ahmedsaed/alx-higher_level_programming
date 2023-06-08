@@ -4,7 +4,7 @@ This module has add_integer implementation
 """
 
 
-def add_integer(a, b=98):
+def add_integer(a, b):
     """return the addition of a and b"""
     if type(a) not in [int, float]:
         raise TypeError("a must be an integer")
