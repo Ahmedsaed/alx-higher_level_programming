@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Base class"""
 
+
 class Base:
     """base class representation.
     Attributes:
@@ -34,7 +35,8 @@ class Base:
             if list_objs is None:
                 file.write("[]")
             else:
-                file.write(Base.to_json_string([i.to_dictionary() for i in list_objs]))
+                file.write(Base.to_json_string(
+                    [i.to_dictionary() for i in list_objs]))
 
     @staticmethod
     def from_json_string(json_string):
@@ -92,12 +94,12 @@ class Base:
         try:
             with open(filename, "r", newline="") as file:
                 if cls.__name__ == "Rectangle":
-                        fieldnames = ["id", "width", "height", "x", "y"]
+                    fieldnames = ["id", "width", "height", "x", "y"]
                 else:
                     fieldnames = ["id", "size", "x", "y"]
                 list_dicts = csv.DictReader(file, fieldnames=fieldnames)
                 list_dicts = [dict([k, int(v)] for k, v in d.items())
-                                for d in list_dicts]
+                              for d in list_dicts]
                 return [cls.create(**d) for d in list_dicts]
         except IOError:
             return []
@@ -114,7 +116,7 @@ class Base:
         WIDTH, HEIGHT = 360, 360
 
         screen = Screen()
-        screen.setup(WIDTH + 4, HEIGHT + 8)  # fudge factors due to window borders & title bar
+        screen.setup(WIDTH + 4, HEIGHT + 8)
         screen.setworldcoordinates(0, 0, WIDTH, HEIGHT)
 
         trt = Turtle()
