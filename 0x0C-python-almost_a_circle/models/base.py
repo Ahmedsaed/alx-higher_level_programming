@@ -66,3 +66,83 @@ class Base:
                 return [cls.create(**cls_dict) for cls_dict in list_dict]
         except IOError:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """writes the CSV representation of list_objs to a file"""
+        import csv
+        filename = cls.__name__ + ".csv"
+        with open(filename, mode="w", newline="") as file:
+            if list_objs is None:
+                file.write("[]")
+            else:
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
+                writer = csv.DictWriter(file, fieldnames=fieldnames)
+                for obj in list_objs:
+                    writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Return a list of classes instantiated from a file of JSON strings"""
+        import csv
+        filename = cls.__name__ + ".csv"
+        try:
+            with open(filename, "r", newline="") as file:
+                if cls.__name__ == "Rectangle":
+                        fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
+                list_dicts = csv.DictReader(file, fieldnames=fieldnames)
+                list_dicts = [dict([k, int(v)] for k, v in d.items())
+                                for d in list_dicts]
+                return [cls.create(**d) for d in list_dicts]
+        except IOError:
+            return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Draw Rectangles and Squares using the turtle module.
+        Args:
+            list_rectangles (list): A list of Rectangle objects to draw.
+            list_squares (list): A list of Square objects to draw.
+        """
+        from turtle import Turtle, Screen, exitonclick
+
+        WIDTH, HEIGHT = 360, 360
+
+        screen = Screen()
+        screen.setup(WIDTH + 4, HEIGHT + 8)  # fudge factors due to window borders & title bar
+        screen.setworldcoordinates(0, 0, WIDTH, HEIGHT)
+
+        trt = Turtle()
+        trt.screen.bgcolor("#777")
+        trt.pensize(3)
+        trt.shape("turtle")
+
+        trt.hideturtle()
+        trt.color("#ffffff")
+        for rect in list_rectangles:
+            trt.up()
+            trt.goto(rect.x, rect.y)
+            trt.down()
+            for i in range(2):
+                trt.forward(rect.width)
+                trt.left(90)
+                trt.forward(rect.height)
+                trt.left(90)
+
+        trt.color("#b5e3d8")
+        for sq in list_squares:
+            trt.up()
+            trt.goto(sq.x, sq.y)
+            trt.down()
+            for i in range(2):
+                trt.forward(sq.width)
+                trt.left(90)
+                trt.forward(sq.height)
+                trt.left(90)
+
+        exitonclick()
