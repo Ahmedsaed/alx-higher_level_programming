@@ -73,7 +73,7 @@ class Base:
         import csv
         filename = cls.__name__ + ".csv"
         with open(filename, mode="w", newline="") as file:
-            if list_objs is None:
+            if list_objs is None or len(list_objs) == 0:
                 file.write("[]")
             else:
                 if cls.__name__ == "Rectangle":
