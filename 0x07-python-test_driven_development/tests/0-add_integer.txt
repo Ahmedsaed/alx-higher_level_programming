@@ -42,3 +42,14 @@ test bool input
         ...
         TypeError: a must be an integer
 
+test one argument
+	>>> add_integer(1)
+	Traceback (most recent call last):
+	...
+	TypeError: add_integer() missing 1 required positional argument: 'b'
+
+test missing two arguments
+	>>> add_integer()
+	Traceback (most recent call last):
+	...
+	TypeError: add_integer() missing 2 required positional arguments: 'a' and 'b'
